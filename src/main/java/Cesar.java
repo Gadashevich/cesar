@@ -13,7 +13,6 @@ public class Cesar {
             System.out.println("Введите ключ");
             key = Integer.parseInt(reader.readLine());
         } catch (IOException e) {
-
         }
 
     }
