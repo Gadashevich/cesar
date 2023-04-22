@@ -1,56 +1,42 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-// почему при повторном вызове Main.menu(); из пунктов, выходит ошибка 23 строки(сканер)
-//почему при шифровании большого файла он режется?
-// В классе CesarFile в методе saveFile не работает 27 строка (вызов потока ввода)
-    public static void main(String[] args) {
-       menu();
-    }
 
-
-    public static void menu() {
-        System.out.println("Программа для шифрования/расшифрования текста по методу Цезаря");
-        System.out.println();
-
-        System.out.println("Выберите пункт меню");
-        System.out.println("1. Шифрование текста через консоль");
-        System.out.println("2. Расшифрование текста через консоль");
-        System.out.println("3. Шифрование текста через файл");
-        System.out.println("4. Расшифрование текста через файл");
-        System.out.println("9. Выход");
-
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        boolean flag = true;
+        System.out.println("Программа для шифрования/расшифрования текста по методу Цезаря");
 
-        while (flag) {
-        int number =  scanner.nextInt();
+        while (true) {
+            System.out.println();
+            System.out.println("Выберите пункт меню");
+            System.out.println("1. Шифрование текста через консоль");
+            System.out.println("2. Расшифрование текста через консоль");
+            System.out.println("3. Шифрование текста через файл");
+            System.out.println("4. Расшифрование текста через файл");
+            System.out.println("9. Выход");
 
-            switch (number) {
-                case 1:
-                    Cesar.cesarCrypt();
-                    flag = false;
+            switch (scanner.nextLine()) {
+
+                case "1":
+                    CesarEncryptText.encryptedText();
                     break;
-                case 2:
-                    Cesar.cesarDecrypt();
-                    flag = false;
+                case "2":
+                    CesarDecryptText.decryptedText();
                     break;
-                case 3:
-                    CesarFile.cesarCryptFile();
-                    flag = false;
+                case "3":
+                    CesarEncryptFile.cesarCryptFile();
                     break;
-                case 4:
-                    CesarFile.cesarDecryptFile();
-                    flag = false;
-                    break;
-                case 9:
-                    flag = false;
+                case "4":
+                    CesarDecryptFile.cesarDecryptFile();
+                    return;
+                case "9":
                     break;
                 default:
-                    break;
+                    return;
             }
-
         }
+
     }
 
 
